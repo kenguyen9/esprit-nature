@@ -1,0 +1,17 @@
+.picsum-img-wrapper {
+    height: 93vh;
+}
+
+.picsum-img-wrapper>img {
+    height: 93vh;
+}
+
+body {
+    background-color: black;
+}
+
+p {
+    display: flex;
+    font-size: larger;
+    justify-content: left;
+}

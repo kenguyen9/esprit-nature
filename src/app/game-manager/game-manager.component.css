@@ -1,0 +1,9 @@
+.main {
+    height: 80vh;
+    background-color: blue;
+}
+
+.item {
+    height: 13vh;
+    background-color: black;
+}
