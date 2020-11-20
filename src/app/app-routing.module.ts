@@ -9,8 +9,6 @@ const routes: Routes = [
   { path: 'prologue', component: IntroComponent },
   {
     path: 'game', component: GameManagerComponent
-
-
   }
 ];
 
