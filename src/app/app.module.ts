@@ -7,6 +7,9 @@ import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IntroComponent } from './intro/intro.component';
 import { GameManagerComponent } from './game-manager/game-manager.component';
+import { SitkaChampignonsComponent } from './game/sitka-champignons/sitka-champignon/sitka-champignons.component';
+import { InfoModalComponent } from './info-modal/info-modal.component';
+import { SitkaQuestComponent } from './game/sitka-champignons/sitka-quest/sitka-quest.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { GameManagerComponent } from './game-manager/game-manager.component';
     MainComponent,
     IntroComponent,
     GameManagerComponent,
+    SitkaChampignonsComponent,
+    InfoModalComponent,
+    SitkaQuestComponent,
   ],
   imports: [
     BrowserModule,

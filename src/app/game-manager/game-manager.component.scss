@@ -1,0 +1,49 @@
+.main {
+    height: 80vh;
+    background-color: blue;
+}
+
+.items {
+    height: 13vh;
+    max-height: 13vh;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://image.freepik.com/free-photo/close-up-burlap-jute-bag-textured-background_53876-74666.jpg');
+    background-repeat: repeat;
+    .card {
+        border: 1px solid rgb(79, 79, 79);
+        box-shadow: 0px 0px 10px rgb(79, 79, 79);
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .card:hover {
+        border-color: gold;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    .item {
+        margin: 0px 10px;
+        width: 8vw;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        .card-body {
+            padding: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .img-container {
+                max-width: 8vw;
+                max-height: 8vw;
+                display: flex;
+                justify-content: center;
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

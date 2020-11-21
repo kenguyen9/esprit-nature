@@ -1,0 +1,42 @@
+<div class="body">
+    <table>
+        <tr>
+            <td>
+                <img src="../../../../assets/sitka.png">
+            </td>
+            <td>
+                <div class="dialogs">
+                    <button class="btn btn-block btn-dark" (click)="sitkaDialog()" placement="right">
+            {{dialogLevel===0?questions[dialogLevel]:questions[dialogLevel-1]}}
+          </button>
+                </div>
+                <p></p>
+                <div *ngIf="dialog.length>0" class="card">
+                    <div class="card-body">
+                        <p *ngFor="let d of dialog">
+                            {{d}}
+                        </p>
+                        <button *ngIf="dialogLevel===1" class="btn btn-block btn-dark " (click)="askForCoco()" placement="right">
+              {{questions[dialogLevel]}}
+            </button>
+                        <button *ngIf="dialogLevel===2" class="btn btn-block btn-dark " (click)="goForCourse()" placement="right">
+              {{questions[dialogLevel]}}
+            </button>
+                        <button *ngIf="dialogLevel===3" class="btn btn-block btn-dark " (click)="startQuest()" placement="right">
+              {{questions[dialogLevel]}}
+            </button>
+                        <button *ngIf="dialogLevel===4" class="btn btn-block btn-primary " routerLink="le-bon-champignon" placement="right">
+              {{questions[dialogLevel]}}
+            </button>
+                    </div>
+                </div>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+
+
+
+</div>

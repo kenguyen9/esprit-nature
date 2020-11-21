@@ -1,6 +1,13 @@
 <div class="main">
-
+    <router-outlet></router-outlet>
 </div>
-<div class="item">
-    hello
+<div class="items">
+    <div *ngFor="let item of items" class="card item">
+        <div class="card-body" [ngbPopover]="item.label">
+            <div class="img-container">
+                <img [src]="item.path">
+                <span></span>
+            </div>
+        </div>
+    </div>
 </div>

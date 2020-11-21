@@ -1,0 +1,31 @@
+<div class="body">
+    <div class="mushrooms">
+        <span class="space"></span>
+        <img src="../../../assets/amanite.png" class="mush" (click)="open(content,amanite)">
+        <span class="space"></span>
+        <img src="../../../assets/gyromitra.png" class="mush" (click)="open(content,gyromitra)">
+        <span class="space"></span>
+        <img src="../../../assets/tricholome.png" class="mush" (click)="open(content,tricholome)">
+        <span class="space"></span>
+        <img src="../../../assets/cepe.png" class="mush" (click)="open(content,cepe)">
+        <span class="space"></span>
+        <img src="../../../assets/entolomes.png" class="mush" (click)="open(content,entolome)">
+        <span class="space"></span>
+    </div>
+</div>
+
+
+<ng-template #content let-modal class="modal">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{openMushroom.title}}</h4>
+    </div>
+    <div class="modal-body">
+        <p *ngFor="let mush of openMushroom.content" class="content">
+            {{mush}}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" *ngIf="openMushroom.id==='cepe'" class="btn btn-success btn-block" (click)="getCepe()">Récupérer les cèpes</button>
+        <button type="button" *ngIf="openMushroom.id!=='cepe'" class="btn btn-danger btn-block" (click)="close()">Continuer à chercher...</button>
+    </div>
+</ng-template>
