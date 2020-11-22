@@ -80,6 +80,7 @@ export class SitkaQuestComponent implements OnInit {
   giveMushRooms(): void {
     this.dialog = [];
     this.dialog.push('Hmmm miam miam !!! 🦌💚');
+    this.gameManager.useItem('cepe');
 
   }
   //#endregion

@@ -63,8 +63,13 @@ export class GameManagerComponent implements OnInit {
   public getEvent(): Observable<GameManagerEvent> {
     return this.eventEmitter.asObservable();
   }
-  onItemClick(item: Item): void{
+  private onItemClick(item: Item): void {
     this.fireEvent(GameManagerEventType.CLICK_ON_ITEM, item);
+  }
+
+  public useItem(itemId: string): void {
+    const index = this.items.findIndex(s => s.id === itemId);
+    this.items[index] = new Item('', '', '');
   }
 
   private fireEvent(eventType: GameManagerEventType, data?: any): void {
