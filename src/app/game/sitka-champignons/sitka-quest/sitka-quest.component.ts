@@ -30,14 +30,14 @@ export class SitkaQuestComponent implements OnInit {
       (event) => {
         if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
           if (event.data.id === 'cepe') {
-            this.dialog.push('HMMM MIAM MIAM');
+            this.giveMushRooms();
           }
         }
       }
-    )
+    );
 
   }
-
+  //#region SITKA LEVEL 0
   sitkaDialog(): void {
     this.dialog = [];
     this.dialog.push('Bonjour jeune humain, je m\'appelle Sitka, Sitka le cerf.');
@@ -69,13 +69,20 @@ export class SitkaQuestComponent implements OnInit {
     this.dialog.push('Merci beaucoup !!!');
     this.dialogLevel = 4;
   }
+  //#endregion
 
+  //#region SITKA LEVEL 1
   sitkaMushDialog(): void {
     this.dialog = [];
     this.dialog.push('Re-bonjour jeune humain.');
     this.dialog.push('Avez-vous trouvé les champignons ?');
   }
+  giveMushRooms(): void {
+    this.dialog = [];
+    this.dialog.push('Hmmm miam miam !!! 🦌💚');
 
+  }
+  //#endregion
 
 
 }

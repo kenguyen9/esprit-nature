@@ -13,8 +13,7 @@ const routes: Routes = [
   {
     path: 'game', component: GameManagerComponent,
     children: [
-      { path: '', component: SitkaQuestComponent },
-    //  { path: '**', redirectTo: 'carte'},
+      { path: '', redirectTo: 'sitka-le-cerf', pathMatch: 'full' },
       { path: 'carte', component: MapGameComponent },
       { path: 'sitka-le-cerf', component: SitkaQuestComponent },
       { path: 'le-bon-champignon', component: SitkaChampignonsComponent }
