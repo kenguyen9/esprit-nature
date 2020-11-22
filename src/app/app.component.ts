@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'espritNature';
+
+  assetUrl = 'https://kenguyen9.github.io/esprit-nature/';
 }

@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment.prod';
 import { GameManagerComponent } from './../../../game-manager/game-manager.component';
 import { Item } from './../../../model/item';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +21,7 @@ export class SitkaChampignonsComponent implements OnInit {
     private modalService: NgbModal,
     private gameManager: GameManagerComponent) { }
 
-
+  public url = environment.assetUrl;
   closeResult = '';
   amanite: Mushroom;
   entolome: Mushroom;
@@ -111,7 +112,7 @@ export class SitkaChampignonsComponent implements OnInit {
     const cepe: Item = {
       id: 'cepe',
       label: 'Cèpes',
-      path: '../../../assets/cepe.png'
+      path: this.url + '/assets/cepe.png'
     };
     this.gameManager.addItem(cepe);
     this.close();

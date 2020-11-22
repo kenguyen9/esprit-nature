@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Level } from './../model/level';
 import { Item } from './../model/item';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +22,8 @@ export interface GameManagerEvent {
 export class GameManagerComponent implements OnInit {
 
   constructor() { }
+
+  public url = environment.assetUrl;
 
   private sitkaLevel: Level;
 

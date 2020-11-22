@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { GameManagerComponent, GameManagerEventType } from './../../../game-manager/game-manager.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,6 +11,7 @@ export class SitkaQuestComponent implements OnInit {
 
   constructor(private gameManager: GameManagerComponent) { }
 
+  public url = environment.assetUrl;
   dialog: string[] = [];
   questions: string[] = [
     'Bonjour, qui-êtes-vous ?',

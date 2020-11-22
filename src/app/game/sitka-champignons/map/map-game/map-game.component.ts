@@ -1,3 +1,4 @@
+import { environment } from './../../../../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,7 @@ export class MapGameComponent implements OnInit {
 
   constructor() { }
 
+  public url = environment.assetUrl;
   ngOnInit(): void {
   }
 
