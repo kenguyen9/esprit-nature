@@ -1,4 +1,4 @@
-import { GameManagerComponent } from './../../../game-manager/game-manager.component';
+import { GameManagerComponent, GameManagerEventType } from './../../../game-manager/game-manager.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,6 @@ export class SitkaQuestComponent implements OnInit {
 
   constructor(private gameManager: GameManagerComponent) { }
 
-  sitka = 'Bonjour jeune humain, je m\'appelle Sitka, Sitka le cerf';
   dialog: string[] = [];
   questions: string[] = [
     'Bonjour, qui-êtes-vous ?',
@@ -20,10 +19,20 @@ export class SitkaQuestComponent implements OnInit {
     'Partir chercher des champignons'
   ];
   dialogLevel = 0;
-  private sitkaLevel;
+  public sitkaLevel;
   public isCollapsed = true;
   ngOnInit(): void {
-    this.sitkaLevel = this.gameManager.getSitkaLevel();
+    this.sitkaLevel = this.gameManager.getSitkaLevel().lvl;
+
+    this.gameManager.getEvent().subscribe(
+      (event) => {
+        if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
+          if (event.data.id === 'cepe') {
+            this.dialog.push('HMMM MIAM MIAM');
+          }
+        }
+      }
+    )
 
   }
 
@@ -57,6 +66,12 @@ export class SitkaQuestComponent implements OnInit {
     this.dialog = [];
     this.dialog.push('Merci beaucoup !!!');
     this.dialogLevel = 4;
+  }
+
+  sitkaMushDialog(): void {
+    this.dialog = [];
+    this.dialog.push('Re-bonjour jeune humain.');
+    this.dialog.push('Avez-vous trouvé les champignons ?');
   }
 
 

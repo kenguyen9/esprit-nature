@@ -6,8 +6,11 @@
             </td>
             <td>
                 <div class="dialogs">
-                    <button class="btn btn-block btn-dark" (click)="sitkaDialog()" placement="right">
+                    <button *ngIf="sitkaLevel==0" class="btn btn-block btn-dark" (click)="sitkaDialog()" placement="right">
             {{dialogLevel===0?questions[dialogLevel]:questions[dialogLevel-1]}}
+          </button>
+                    <button *ngIf="sitkaLevel==1" class="btn btn-block btn-dark" (click)="sitkaMushDialog()" placement="right">
+            CHAMPIGNONS
           </button>
                 </div>
                 <p></p>
@@ -16,16 +19,16 @@
                         <p *ngFor="let d of dialog">
                             {{d}}
                         </p>
-                        <button *ngIf="dialogLevel===1" class="btn btn-block btn-dark " (click)="askForCoco()" placement="right">
+                        <button *ngIf="dialogLevel===1" class="btn btn-block btn-dark " (click)="askForCoco()">
               {{questions[dialogLevel]}}
             </button>
-                        <button *ngIf="dialogLevel===2" class="btn btn-block btn-dark " (click)="goForCourse()" placement="right">
+                        <button *ngIf="dialogLevel===2" class="btn btn-block btn-dark " (click)="goForCourse()">
               {{questions[dialogLevel]}}
             </button>
-                        <button *ngIf="dialogLevel===3" class="btn btn-block btn-dark " (click)="startQuest()" placement="right">
+                        <button *ngIf="dialogLevel===3" class="btn btn-block btn-dark " (click)="startQuest()">
               {{questions[dialogLevel]}}
             </button>
-                        <button *ngIf="dialogLevel===4" class="btn btn-block btn-primary " routerLink="le-bon-champignon" placement="right">
+                        <button *ngIf="dialogLevel===4" class="btn btn-block btn-primary " routerLink="../le-bon-champignon">
               {{questions[dialogLevel]}}
             </button>
                     </div>

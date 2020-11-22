@@ -2,8 +2,14 @@
     <router-outlet></router-outlet>
 </div>
 <div class="items">
+    <div class="item map" routerLink="carte">
+        <div class="img-container">
+            <img src="../../assets/treasure-map-icon.png">
+        </div>
+    </div>
+
     <div *ngFor="let item of items" class="card item">
-        <div class="card-body" [ngbPopover]="item.label">
+        <div class="card-body" [ngbPopover]="item.label" (click)="onItemClick(item)">
             <div class="img-container">
                 <img [src]="item.path">
                 <span></span>

@@ -1,9 +1,18 @@
 import { Level } from './../model/level';
 import { Item } from './../model/item';
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 
 const MAX_ITEMS_SIZE = 5;
+
+export enum GameManagerEventType {
+  CLICK_ON_ITEM = 'CLICK_ON_ITEM' as any
+}
+export interface GameManagerEvent {
+  eventType: GameManagerEventType;
+  data?: any;
+}
 @Component({
   selector: 'app-game-manager',
   templateUrl: './game-manager.component.html',
@@ -14,6 +23,8 @@ export class GameManagerComponent implements OnInit {
   constructor() { }
 
   private sitkaLevel: Level;
+
+  private eventEmitter = new Subject<GameManagerEvent>();
 
   public items: Item[] = [];
   ngOnInit(): void {
@@ -39,11 +50,28 @@ export class GameManagerComponent implements OnInit {
     return res !== -1;
   }
 
-  public getSitkaLevel(): Item{
+  public getSitkaLevel(): Level {
     return this.sitkaLevel;
   }
-  public levelUpSitka(): void{
+  public levelUpSitka(): void {
     this.sitkaLevel.lvl++;
+  }
+
+  public getEvent(): Observable<GameManagerEvent> {
+    return this.eventEmitter.asObservable();
+  }
+  onItemClick(item: Item): void{
+    this.fireEvent(GameManagerEventType.CLICK_ON_ITEM, item);
+  }
+
+  private fireEvent(eventType: GameManagerEventType, data?: any): void {
+    const event: GameManagerEvent = {
+      eventType
+    };
+    if (data) {
+      event.data = data;
+    }
+    this.eventEmitter.next(event);
   }
 
 }

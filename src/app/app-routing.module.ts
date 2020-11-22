@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { IntroComponent } from './intro/intro.component';
 import { SitkaChampignonsComponent } from './game/sitka-champignons/sitka-champignon/sitka-champignons.component';
+import { MapGameComponent } from './game/sitka-champignons/map/map-game/map-game.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -13,8 +14,10 @@ const routes: Routes = [
     path: 'game', component: GameManagerComponent,
     children: [
       { path: '', component: SitkaQuestComponent },
+    //  { path: '**', redirectTo: 'carte'},
+      { path: 'carte', component: MapGameComponent },
       { path: 'sitka-le-cerf', component: SitkaQuestComponent },
-      { path: 'le-bon-champignon', component: SitkaChampignonsComponent}
+      { path: 'le-bon-champignon', component: SitkaChampignonsComponent }
     ]
   }
 ];

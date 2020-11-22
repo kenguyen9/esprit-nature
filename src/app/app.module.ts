@@ -10,6 +10,7 @@ import { GameManagerComponent } from './game-manager/game-manager.component';
 import { SitkaChampignonsComponent } from './game/sitka-champignons/sitka-champignon/sitka-champignons.component';
 import { InfoModalComponent } from './info-modal/info-modal.component';
 import { SitkaQuestComponent } from './game/sitka-champignons/sitka-quest/sitka-quest.component';
+import { MapGameComponent } from './game/sitka-champignons/map/map-game/map-game.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SitkaQuestComponent } from './game/sitka-champignons/sitka-quest/sitka-
     SitkaChampignonsComponent,
     InfoModalComponent,
     SitkaQuestComponent,
+    MapGameComponent,
   ],
   imports: [
     BrowserModule,
