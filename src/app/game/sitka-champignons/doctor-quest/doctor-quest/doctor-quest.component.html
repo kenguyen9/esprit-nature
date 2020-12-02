@@ -1,0 +1,74 @@
+<div class="body">
+
+    <table>
+        <tr>
+            <td>
+                <img src="https://assets.stickpng.com/images/58f37726a4fa116215a92410.png">
+            </td>
+            <td>
+                <button *ngIf="dialogLevel===0 && doctorLevel.lvl===0" class="btn btn-dark btn-block" (click)="helloDoctor()">{{questions[dialogLevel]}}</button>
+                <button *ngIf="dialogLevel!==0 && doctorLevel.lvl===0" class="btn btn-dark btn-block">{{questions[dialogLevel-1]}}</button>
+                <button *ngIf="dialogLevel===0 && doctorLevel.lvl===1" class="btn btn-dark btn-block" (click)="soWhat()">Re-Bonjour Docteur</button>
+                <p></p>
+                <div class="card" *ngIf="dialogs.length>0">
+                    <div class="card-body">
+                        <p *ngFor="let span of dialogs">
+                            {{span}}
+                        </p>
+                        <button *ngIf="dialogLevel===1" class="btn btn-dark btn-block" (click)="rehelloDoctor()">{{questions[dialogLevel]}}</button>
+                        <button *ngIf="dialogLevel===2" class="btn btn-dark btn-block" (click)="askForHelp()">{{questions[dialogLevel]}}</button>
+                        <button *ngIf="dialogLevel===3" class="btn btn-dark btn-block" (click)="whatToDo()">{{questions[dialogLevel]}}</button>
+                        <button *ngIf="dialogLevel===4" class="btn btn-dark btn-block" (click)="launchQuest()">{{questions[dialogLevel]}}</button>
+                        <button *ngIf="dialogLevel===5" class="btn btn-primary btn-block" routerLink="../le-laboratoire">{{questions[dialogLevel]}}</button>
+                        <button *ngIf="dialogLevel===6" class="btn btn-dark btn-block" (click)="explain()">Je n'ai pas bien compris...</button>
+                        <button *ngIf="dialogLevel===8" class="btn btn-dark btn-block" (click)="getObject()">Récupérer l'objet</button>
+                    </div>
+                </div>
+                <p></p>
+                <button *ngIf='doctorLevel.lvl===1' class="btn btn-block" style="color: white;background-color: maroon;" (click)="open(content)">
+                  <p></p>
+                  <p>Carnet de Recettes</p>
+                  <p> <i> Par Le Docteur</i></p>
+                </button>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="content">
+        <table>
+            <tr class="title">
+                <i>Recette d'antidote anti-maux pour lutins</i>
+            </tr>
+            <br>
+            <tr>
+                <b><i>Cet antidote permet au lutin qui la boit de se guérir des maladies.</i></b>
+            </tr>
+            <br>
+            <tr>
+                <span class="title2">Ingrédients</span>
+                <ul>
+                    <li>1 dose d'Aqua Mineralus</li>
+                    <li>1 dose de Lipous Rouge</li>
+                    <li>1 dose de Sallus Vert</li>
+                    <li>1 dose de Grapcorne</li>
+                </ul>
+            </tr>
+            <tr>
+                <span class="title2">Préparation (DANS L'ORDRE!)</span>
+                <ul>
+                    <li>Verser 1 dose d'Aqua Mineralus</li>
+                    <li>Verser 1 dose de Sallus Vert</li>
+                    <li>Verser 1 dose de Lipous Rouge</li>
+                    <li>Verser 1 dose de Grapcorne</li>
+                    <li>Enfin, mélanger la potion</li>
+                </ul>
+            </tr>
+        </table>
+    </div>
+</ng-template>

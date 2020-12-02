@@ -1,0 +1,78 @@
+<div class="body">
+    <table>
+        <tr>
+            <td>
+                <button class="addIngr" (click)="addIngredient(potionDictionnary.AQUA_MINERALUS)">
+          <img [src]="url + '/assets/aqua.png'">
+          Aqua Mineralus</button>
+            </td>
+            <td>
+                <button class="addIngr" (click)="addIngredient(potionDictionnary.PIMENTINE)">
+          <img [src]="url + '/assets/pimentine.png'">
+          Pimentine
+        </button>
+            </td>
+            <td>
+                <button class="addIngr" (click)="addIngredient(potionDictionnary.GRAPCORNE)">
+          <img [src]="url + '/assets/grapcorne.png'">
+          Grapcorne
+        </button>
+            </td>
+            <td><button class="addIngr" (click)="addIngredient(potionDictionnary.ACONITE)">
+          <img [src]="url + '/assets/aconite.png'">
+          Aconite
+        </button></td>
+        </tr>
+        <tr>
+            <td><button class="addIngr" (click)="addIngredient(potionDictionnary.LIPOUS_ROUGE)">
+          <img [src]="url + '/assets/lipous_rouge.png'">
+          Lipous Rouge
+        </button></td>
+            <td><button class="addIngr" (click)="addIngredient(potionDictionnary.SALLUS_VERT)">
+          <img [src]="url + '/assets/sallus_vert.png'">
+          Sallus Vert
+        </button></td>
+            <td><button class="addIngr" (click)="addIngredient(potionDictionnary.SISIMBRE)">
+          <img [src]="url + '/assets/sisimbre.png'">
+          Sisimbre
+        </button></td>
+            <td><button class="addIngr" (click)="addIngredient(potionDictionnary.ARMOTENTIA)">
+          <img [src]="url + '/assets/armotentia.png'">
+          Armotentia
+        </button></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div *ngIf="!isMixed" class="potion">
+                    <div class="ingredient"></div>
+                    <div class="ingredient" [ngClass]="currentPotion.ingredients[3]?currentPotion.ingredients[3].class.toString():''"></div>
+                    <div class="ingredient" [ngClass]="currentPotion.ingredients[2]?currentPotion.ingredients[2].class.toString():''"></div>
+                    <div class="ingredient" [ngClass]="currentPotion.ingredients[1]?currentPotion.ingredients[1].class.toString():''"></div>
+                    <div class="ingredient" [ngClass]="currentPotion.ingredients[0]?currentPotion.ingredients[0].class.toString():''"></div>
+                </div>
+                <div *ngIf="isMixed && !isGood" class="potion">
+                    <div class="ingredient"></div>
+                    <div class="ingredient fail"></div>
+                    <div class="ingredient fail"></div>
+                    <div class="ingredient fail"></div>
+                    <div class="ingredient fail"></div>
+                </div>
+                <div *ngIf="isMixed && isGood" class="potion">
+                    <div class="ingredient"></div>
+                    <div class="ingredient success"></div>
+                    <div class="ingredient success"></div>
+                    <div class="ingredient success"></div>
+                    <div class="ingredient success"></div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-dark " [disabled]="currentPotion.ingredients.length===0" (click)="restartPotion()">Recommencer la potion</button></td>
+            <td><button class="btn btn-dark " [disabled]="currentPotion.ingredients.length===0" (click)="mixPotion()">Mélanger la potion</button></td>
+
+            <td><button class="btn btn-primary" [disabled]="!isMixed" (click)="getPotion()">Récupérer</button></td>
+        </tr>
+    </table>
+</div>

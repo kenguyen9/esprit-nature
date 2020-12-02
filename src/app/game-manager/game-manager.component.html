@@ -2,6 +2,11 @@
     <router-outlet></router-outlet>
 </div>
 <div class="items">
+    <button style="padding: 5px;background-color: green;" (click)="reset()">Reset</button>
+    <button class="btn btn-large btn-dark" placement="top" ngbPopover="Pour te déplacer de lieu en lieu, appuie sur la carte juste à droite !
+    Tu vas collecter des objets pendant le jeu, tu devras cliquer dessus au bon moment pour résoudre les énigmes." popoverTitle="? Aide">
+    Aide
+  </button>
     <div class="item map" routerLink="carte">
         <div class="img-container">
             <img [src]="url+ '/assets/treasure-map-icon.png'">

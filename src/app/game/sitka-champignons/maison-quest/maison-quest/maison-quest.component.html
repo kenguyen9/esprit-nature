@@ -1,0 +1,48 @@
+<div class="body">
+
+    <table>
+        <tr>
+            <td></td>
+            <td class="panel serrure">
+                <img [src]="url + '/assets/coco_door_serrure.png'">
+            </td>
+            <td></td>
+            <td class="panel keys">
+                <img [src]="url + '/assets/coco_door_keys.png'">
+                <div style="display: inline-flex; justify-content: center; width: 100%; padding: 10px;">
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,1)">1</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,2)">2</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,3)">3</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,4)">4</button>
+                </div>
+                <div style="display: inline-flex; justify-content: center; width: 100%; padding: 10px;">
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,5)">5</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,6)">6</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,7)">7</button>
+                    <span style="min-width: 10%"></span>
+                    <button class="btn btn-primary" style="width: 20%;" (click)="open(content,8)">8</button>
+                </div>
+                <p></p>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+<ng-template #content let-modal>
+    <div class="content">
+        <div *ngIf="selectedKey===7">
+            <h3><i>*Click!* *Clack!*</i> ... La porte s'ouvre !</h3>
+            <button class="btn btn-block btn-primary" (click)="modal.close()">Entrer dans la chambre</button>
+        </div>
+        <div *ngIf="selectedKey!==7">
+            <h3>La clef ne correspond pas à la serrure...</h3>
+            <button class="btn btn-block btn-danger" (click)="modal.close()">Essayer avec une autre</button>
+        </div>
+    </div>
+</ng-template>

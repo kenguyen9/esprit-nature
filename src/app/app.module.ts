@@ -11,6 +11,11 @@ import { SitkaChampignonsComponent } from './game/sitka-champignons/sitka-champi
 import { InfoModalComponent } from './info-modal/info-modal.component';
 import { SitkaQuestComponent } from './game/sitka-champignons/sitka-quest/sitka-quest.component';
 import { MapGameComponent } from './game/sitka-champignons/map/map-game/map-game.component';
+import { DoctorQuestComponent } from './game/sitka-champignons/doctor-quest/doctor-quest/doctor-quest.component';
+import { DoctorLaboratoryComponent } from './game/sitka-champignons/doctor-laboratory/doctor-laboratory/doctor-laboratory.component';
+import { MaisonCocoComponent } from './game/sitka-champignons/maison-coco/maison-coco/maison-coco.component';
+import { MaisonQuestComponent } from './game/sitka-champignons/maison-quest/maison-quest/maison-quest.component';
+import { MaisonBedroomComponent } from './game/sitka-champignons/maison-bedroom/maison-bedroom.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import { MapGameComponent } from './game/sitka-champignons/map/map-game/map-game
     InfoModalComponent,
     SitkaQuestComponent,
     MapGameComponent,
+    DoctorQuestComponent,
+    DoctorLaboratoryComponent,
+    MaisonCocoComponent,
+    MaisonQuestComponent,
+    MaisonBedroomComponent,
   ],
   imports: [
     BrowserModule,

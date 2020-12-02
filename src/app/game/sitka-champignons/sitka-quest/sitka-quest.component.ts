@@ -64,7 +64,7 @@ export class SitkaQuestComponent implements OnInit {
   }
 
   startQuest(): void {
-    this.gameManager.levelUpSitka();
+    this.gameManager.levelUpLevel('sitka', 1);
     this.dialog = [];
     this.dialog.push('Merci beaucoup !!!');
     this.dialogLevel = 4;
@@ -81,6 +81,7 @@ export class SitkaQuestComponent implements OnInit {
     this.dialog = [];
     this.dialog.push('Hmmm miam miam !!! 🦌💚');
     this.gameManager.useItem('cepe');
+    this.gameManager.levelUpLevel('sitka', 2);
 
   }
   //#endregion

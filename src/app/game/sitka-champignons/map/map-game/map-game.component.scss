@@ -20,6 +20,11 @@
                         border: 3px dashed gray;
                     }
                 }
+                .linked-hori {
+                    width: 50px;
+                    border: 3px dashed gray;
+                    height: 3px;
+                }
                 .link:hover {
                     .linked-bottom {
                         border-color: red;

@@ -1,0 +1,30 @@
+.body {
+    height: 100%;
+    width: 100%;
+    background-color: blueviolet;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("/assets/coco_house.jpg");
+    table {
+        height: 100%;
+        width: 100%;
+        tr {
+            width: 100%;
+            td {
+                width: 100%;
+                min-width: 33vw;
+                img {
+                    width: 30vw;
+                    position: absolute;
+                    bottom: 13vh;
+                    left: 0;
+                }
+                .card {
+                    background-color: rgba(0, 0, 0, 0.7);
+                    color: white;
+                    font-size: larger;
+                }
+            }
+        }
+    }
+}
