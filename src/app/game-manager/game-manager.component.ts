@@ -1,8 +1,9 @@
 import { environment } from './../../environments/environment.prod';
 import { Level } from './../model/level';
 import { Item } from './../model/item';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 const MAX_ITEMS_SIZE = 5;
@@ -26,7 +27,7 @@ export interface GameManagerEvent {
 })
 export class GameManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   public url = environment.assetUrl;
 
@@ -35,12 +36,14 @@ export class GameManagerComponent implements OnInit {
 
   private eventEmitter = new Subject<GameManagerEvent>();
 
-  private gameCookie: GameCookie = {
+  public gameCookie: GameCookie = {
     levels: [],
     items: []
   };
 
   public items: Item[] = [];
+  public popupItem: Item;
+  @ViewChild('content') content: any;
   ngOnInit(): void {
 
     this.sitkaLevel = new Level('sitka');
@@ -50,51 +53,63 @@ export class GameManagerComponent implements OnInit {
     this.gameCookie.levels.push(this.sitkaLevel);
     this.gameCookie.levels.push(this.doctorLevel);
 
-    const local = JSON.parse(localStorage.getItem('gameCookie'));
-    if (local.levels.length > 0) {
+    const json = localStorage.getItem('gameCookie');
+    const local = JSON.parse(json);
+    if (local.levels?.length > 0) {
       this.gameCookie.levels = local.levels;
     }
-    if (local.items.length > 0) {
+    if (local.items?.length > 0) {
       this.gameCookie.items = local.items;
     }
     console.log(this.gameCookie);
 
-    for (let i = 0; i < MAX_ITEMS_SIZE; i++) {
-      const item = this.gameCookie.items[i];
-      if (item) {
-        this.items.push(item);
-      } else {
-        this.items.push(new Item('', '', ''));
-      }
-    }
+
+    localStorage.setItem('gameCookie', JSON.stringify(this.gameCookie));
 
 
   }
+
 
   public reset(): void {
-    this.gameCookie.items = [];
-    this.items.forEach(i => {
-      i.id = i.label = i.path = '';
+    for (let i = 0; i < MAX_ITEMS_SIZE; i++) {
+      this.gameCookie.items[i] = new Item('', '', '');
+    }
+    while(this.gameCookie.items.length > MAX_ITEMS_SIZE){
+      this.gameCookie.items.pop();
+    }
+
+    this.gameCookie.levels.forEach(l => {
+      l.lvl = 0;
     });
-    this.gameCookie.levels.forEach(l => l.lvl = 0);
     localStorage.setItem('gameCookie', JSON.stringify(this.gameCookie));
   }
+
+  public open(content): void {
+    this.modalService.open(content, {
+      ariaLabelledBy: 'modal-basic-title',
+      centered: true
+    }).result.then((result) => {
+    }, (reason) => {
+    });
+  }
+
 
   public addItem(item: Item): void {
     if (!this.isAlreadyTaken(item)) {
       const index = this.getFirstEmptyItemSlot();
-      this.items[index] = item;
-      this.gameCookie.items.push(item);
+      this.gameCookie.items[index] = item;
+      this.popupItem = item;
+      this.open(this.content);
       localStorage.setItem('gameCookie', JSON.stringify(this.gameCookie));
     }
   }
 
   private getFirstEmptyItemSlot(): number {
-    return this.items.findIndex(s => s.id === '');
+    return this.gameCookie.items.findIndex(s => s.id === '');
   }
 
   private isAlreadyTaken(item: Item): boolean {
-    const res = this.items.findIndex(i => i.id === item.id);
+    const res = this.gameCookie.items.findIndex(i => i.id === item.id);
     return res !== -1;
   }
 
@@ -119,8 +134,8 @@ export class GameManagerComponent implements OnInit {
   }
 
   public useItem(itemId: string): void {
-    const index = this.items.findIndex(s => s.id === itemId);
-    this.items[index] = new Item('', '', '');
+    const index = this.gameCookie.items.findIndex(s => s.id === itemId);
+    this.gameCookie.items[index] = new Item('', '', '');
     this.gameCookie.items = this.gameCookie.items.filter(i => i.id !== itemId);
     localStorage.setItem('gameCookie', JSON.stringify(this.gameCookie));
   }

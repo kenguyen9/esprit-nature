@@ -7,4 +7,7 @@ export class Level {
     this.lvl = 0;
   }
 
+  reset(): void{
+    this.lvl = 0;
+  }
 }

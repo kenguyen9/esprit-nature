@@ -1,45 +1,50 @@
 import { Level } from './../../../../model/level';
 import { GameManagerComponent, GameManagerEventType } from 'src/app/game-manager/game-manager.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from 'src/app/model/item';
 import { environment } from 'src/environments/environment';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-doctor-quest',
   templateUrl: './doctor-quest.component.html',
   styleUrls: ['./doctor-quest.component.scss']
 })
-export class DoctorQuestComponent implements OnInit {
+export class DoctorQuestComponent implements OnInit, OnDestroy {
 
 
   constructor(
     private modalService: NgbModal,
     private gameManager: GameManagerComponent) { }
 
+
   public dialogLevel = 0;
   public dialogs: string[] = [];
   public questions: string[] = [];
   public doctorLevel: Level;
+  private destroySubject = new Subject<void>();
   private url = environment.assetUrl;
   ngOnInit(): void {
+    this.doctorLevel = this.gameManager.getDoctorLevel();
 
-    this.gameManager.getEvent().subscribe(
-      (event) => {
-        if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
-          const item: Item = event.data;
-          if (item.id === 'potion_good' && this.doctorLevel.lvl === 1) {
-            this.congrat();
-          }
-          if (item.id === 'potion_fail' && this.doctorLevel.lvl === 1) {
-            this.fail();
+    this.gameManager.getEvent()
+      .pipe(takeUntil(this.destroySubject))
+      .subscribe(
+        (event) => {
+          if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
+            const item: Item = event.data;
+            if (item.id === 'potion_good' && this.doctorLevel.lvl === 1) {
+              this.congrat();
+            }
+            if (item.id === 'potion_fail' && this.doctorLevel.lvl === 1) {
+              this.fail();
+            }
           }
         }
-      }
-    );
-    this.doctorLevel = this.gameManager.getDoctorLevel();
+      );
     this.questions.push('Bonjour Docteur!');
-
 
     if (this.doctorLevel.lvl === 2) {
       this.dialogs = [];
@@ -47,6 +52,11 @@ export class DoctorQuestComponent implements OnInit {
       this.dialogs.push('*... Est-ce que j\'ai pensé à fermer le robinet...*');
       this.dialogs.push('*... La poussée d\'Archimède...*');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject.next();
+    this.destroySubject.unsubscribe();
   }
 
   public open(content): void {
@@ -142,7 +152,7 @@ export class DoctorQuestComponent implements OnInit {
     const wood: Item = {
       id: 'wood_planks',
       label: 'Planches de bois',
-      path : this.url + '/assets/wood_planks.png'
+      path: this.url + '/assets/wood_planks.png'
     };
     this.gameManager.addItem(wood);
     this.gameManager.levelUpLevel('doctor', 2);
@@ -150,7 +160,7 @@ export class DoctorQuestComponent implements OnInit {
 
 
 
-  public fail(){
+  public fail() {
     this.dialogs = [];
     this.dialogs.push('Cette potion ne va pas du tout...');
     this.dialogs.push('Il vous faut recommencer.');

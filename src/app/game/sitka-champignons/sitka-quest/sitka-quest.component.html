@@ -6,10 +6,10 @@
             </td>
             <td>
                 <div class="dialogs">
-                    <button *ngIf="sitkaLevel==0" class="btn btn-block btn-dark" (click)="sitkaDialog()" placement="right">
+                    <button *ngIf="sitkaLevel.lvl==0" class="btn btn-block btn-dark" (click)="sitkaDialog()" placement="right">
             {{dialogLevel===0?questions[dialogLevel]:questions[dialogLevel-1]}}
           </button>
-                    <button *ngIf="sitkaLevel==1" class="btn btn-block btn-dark" (click)="sitkaMushDialog()" placement="right">
+                    <button *ngIf="sitkaLevel.lvl==1" class="btn btn-block btn-dark" (click)="sitkaMushDialog()" placement="right">
             Re-bonjour Sitka !
           </button>
                 </div>
@@ -30,6 +30,9 @@
             </button>
                         <button *ngIf="dialogLevel===4" class="btn btn-block btn-primary " routerLink="../le-bon-champignon">
               {{questions[dialogLevel]}}
+            </button>
+                        <button *ngIf="dialogLevel===5 && sitkaLevel.lvl==2" class="btn btn-block btn-primary">
+              Partir chercher Coco.
             </button>
                     </div>
                 </div>

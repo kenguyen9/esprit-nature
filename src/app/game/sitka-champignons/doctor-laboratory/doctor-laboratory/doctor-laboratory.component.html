@@ -46,6 +46,7 @@
             <td>
                 <div *ngIf="!isMixed" class="potion">
                     <div class="ingredient"></div>
+                    <div class="ingredient" [ngClass]="currentPotion.ingredients[4]?currentPotion.ingredients[4].class.toString():''"></div>
                     <div class="ingredient" [ngClass]="currentPotion.ingredients[3]?currentPotion.ingredients[3].class.toString():''"></div>
                     <div class="ingredient" [ngClass]="currentPotion.ingredients[2]?currentPotion.ingredients[2].class.toString():''"></div>
                     <div class="ingredient" [ngClass]="currentPotion.ingredients[1]?currentPotion.ingredients[1].class.toString():''"></div>
@@ -57,9 +58,11 @@
                     <div class="ingredient fail"></div>
                     <div class="ingredient fail"></div>
                     <div class="ingredient fail"></div>
+                    <div class="ingredient fail"></div>
                 </div>
                 <div *ngIf="isMixed && isGood" class="potion">
                     <div class="ingredient"></div>
+                    <div class="ingredient success"></div>
                     <div class="ingredient success"></div>
                     <div class="ingredient success"></div>
                     <div class="ingredient success"></div>

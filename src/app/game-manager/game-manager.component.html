@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div *ngFor="let item of items" class="card item">
+    <div *ngFor="let item of gameCookie.items" class="card item">
         <div class="card-body" [ngbPopover]="item.label" (click)="onItemClick(item)">
             <div class="img-container">
                 <img [src]="item.path">
@@ -22,3 +22,14 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Nouvel objet !</h4>
+    </div>
+    <div class="modal-body">
+        <h4>{{popupItem.label}}</h4>
+        <img [src]="popupItem.path">
+    </div>
+</ng-template>

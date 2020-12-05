@@ -114,8 +114,8 @@ export class SitkaChampignonsComponent implements OnInit {
       label: 'Cèpes',
       path: this.url + '/assets/cepe.png'
     };
-    this.gameManager.addItem(cepe);
     this.close();
+    this.gameManager.addItem(cepe);
   }
 
 

@@ -3,6 +3,17 @@
     background-color: blue;
 }
 
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    img {
+        width: 100%;
+    }
+}
+
 .items {
     height: 13vh;
     max-height: 13vh;

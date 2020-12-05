@@ -1,16 +1,21 @@
+import { Level } from './../../../model/level';
+import { logging } from 'protractor';
 import { environment } from './../../../../environments/environment';
 import { GameManagerComponent, GameManagerEventType } from './../../../game-manager/game-manager.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sitka-quest',
   templateUrl: './sitka-quest.component.html',
   styleUrls: ['./sitka-quest.component.css']
 })
-export class SitkaQuestComponent implements OnInit {
+export class SitkaQuestComponent implements OnInit, OnDestroy {
 
   constructor(private gameManager: GameManagerComponent) { }
 
+  private destroySubject = new Subject<void>();
   public url = environment.assetUrl;
   dialog: string[] = [];
   questions: string[] = [
@@ -21,21 +26,35 @@ export class SitkaQuestComponent implements OnInit {
     'Partir chercher des champignons'
   ];
   dialogLevel = 0;
-  public sitkaLevel;
+  public sitkaLevel: Level;
   public isCollapsed = true;
   ngOnInit(): void {
-    this.sitkaLevel = this.gameManager.getSitkaLevel().lvl;
+    this.sitkaLevel = this.gameManager.getSitkaLevel();
 
-    this.gameManager.getEvent().subscribe(
-      (event) => {
-        if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
-          if (event.data.id === 'cepe') {
-            this.giveMushRooms();
+    if (this.sitkaLevel.lvl === 2) {
+      this.dialog = [];
+      this.dialog.push('Encore merci pour les champignons !');
+      this.dialog.push('Bon courage pour retrouver Coco!');
+    }
+
+    this.gameManager.getEvent()
+      .pipe(takeUntil(this.destroySubject))
+      .subscribe(
+        (event) => {
+          if (event.eventType === GameManagerEventType.CLICK_ON_ITEM) {
+            if (event.data.id === 'cepe' && this.sitkaLevel.lvl === 1) {
+              this.giveMushRooms();
+            }
           }
         }
-      }
-    );
+      );
 
+
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject.next();
+    this.destroySubject.unsubscribe();
   }
   //#region SITKA LEVEL 0
   sitkaDialog(): void {
@@ -80,9 +99,12 @@ export class SitkaQuestComponent implements OnInit {
   giveMushRooms(): void {
     this.dialog = [];
     this.dialog.push('Hmmm miam miam !!! 🦌💚');
+    this.dialog.push('');
+    this.dialog.push('Mes amis ont croisé Coco ce matin. Il se rendait au cabinet du Docteur.');
+    this.dialog.push('J\'espère que cela va t\'aider pour le retrouver !');
+    this.dialogLevel = 5;
     this.gameManager.useItem('cepe');
     this.gameManager.levelUpLevel('sitka', 2);
-
   }
   //#endregion
 

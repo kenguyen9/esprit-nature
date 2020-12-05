@@ -36,8 +36,9 @@ export class DoctorLaboratoryComponent implements OnInit {
     label: 'Bonne',
     ingredients: [
       this.potionDictionnary.AQUA_MINERALUS,
-      this.potionDictionnary.LIPOUS_ROUGE,
       this.potionDictionnary.SALLUS_VERT,
+      this.potionDictionnary.LIPOUS_ROUGE,
+      this.potionDictionnary.ARMOTENTIA,
       this.potionDictionnary.GRAPCORNE
     ]
   };
@@ -47,7 +48,6 @@ export class DoctorLaboratoryComponent implements OnInit {
 
   addIngredient(ingredient: Ingredient): void {
     this.currentPotion.ingredients.push(ingredient);
-    console.log(ingredient);
   }
 
   restartPotion() {
@@ -62,14 +62,12 @@ export class DoctorLaboratoryComponent implements OnInit {
   isGoodPotion(): boolean {
     this.isMixed = true;
     const res = true;
-    if (this.currentPotion.ingredients.length === 4) {
-      this.currentPotion.ingredients.forEach(
-        (ingredient, index) => {
-          if (ingredient.id !== this.goodPotion.ingredients[index].id) {
-            return false;
-          }
+    if (this.currentPotion.ingredients.length === this.goodPotion.ingredients.length) {
+      for (let i = 0; i < this.goodPotion.ingredients.length - 1; i++) {
+        if (this.currentPotion.ingredients[i].id !== this.goodPotion.ingredients[i].id) {
+          return false;
         }
-      );
+      }
     } else {
       return false;
     }
