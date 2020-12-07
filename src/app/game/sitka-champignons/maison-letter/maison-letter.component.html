@@ -1,0 +1,21 @@
+<div class="body">
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <div class="input-group mb-3 input">
+                    <input type="text" class="form-control" placeholder="Message décodé" [(ngModel)]="typedCode">
+                </div>
+                <button class="btn btn-primary input" (click)="open(content)">Valider</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<ng-template #content let-modal>
+    <div style="padding: 10px;">
+        <button *ngIf="success" class="btn btn-block btn-primary" (click)="modal.close()">bravo</button>
+        <button *ngIf="!success" class="btn btn-block btn-danger" (click)="modal.close()">nul</button>
+    </div>
+</ng-template>

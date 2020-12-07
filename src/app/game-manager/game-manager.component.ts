@@ -31,8 +31,6 @@ export class GameManagerComponent implements OnInit {
 
   public url = environment.assetUrl;
 
-  private sitkaLevel: Level;
-  private doctorLevel: Level;
 
   private eventEmitter = new Subject<GameManagerEvent>();
 
@@ -46,20 +44,23 @@ export class GameManagerComponent implements OnInit {
   @ViewChild('content') content: any;
   ngOnInit(): void {
 
-    this.sitkaLevel = new Level('sitka');
-    this.doctorLevel = new Level('doctor');
 
 
-    this.gameCookie.levels.push(this.sitkaLevel);
-    this.gameCookie.levels.push(this.doctorLevel);
+    this.gameCookie.levels.push(new Level('sitka'));
+    this.gameCookie.levels.push(new Level('doctor'));
+    this.gameCookie.levels.push(new Level('serpent'));
 
     const json = localStorage.getItem('gameCookie');
     const local = JSON.parse(json);
-    if (local.levels?.length > 0) {
+    if (local?.levels?.length > 0) {
       this.gameCookie.levels = local.levels;
     }
-    if (local.items?.length > 0) {
+    if (local?.items?.length > 0) {
       this.gameCookie.items = local.items;
+    }else{
+      for (let i = 0; i < MAX_ITEMS_SIZE; i++) {
+        this.gameCookie.items[i] = new Item('', '', '');
+      }
     }
     console.log(this.gameCookie);
 
@@ -74,7 +75,7 @@ export class GameManagerComponent implements OnInit {
     for (let i = 0; i < MAX_ITEMS_SIZE; i++) {
       this.gameCookie.items[i] = new Item('', '', '');
     }
-    while(this.gameCookie.items.length > MAX_ITEMS_SIZE){
+    while (this.gameCookie.items.length > MAX_ITEMS_SIZE) {
       this.gameCookie.items.pop();
     }
 
@@ -113,12 +114,10 @@ export class GameManagerComponent implements OnInit {
     return res !== -1;
   }
 
-  public getSitkaLevel(): Level {
-    return this.gameCookie.levels.find(l => l.id === 'sitka');
+  public getlevel(levelId: string): Level {
+    return this.gameCookie.levels.find(l => l.id === levelId);
   }
-  public getDoctorLevel(): Level {
-    return this.gameCookie.levels.find(l => l.id === 'doctor');
-  }
+
 
   levelUpLevel(levelId: string, lvl: number) {
     const level = this.gameCookie.levels.find(l => l.id === levelId);

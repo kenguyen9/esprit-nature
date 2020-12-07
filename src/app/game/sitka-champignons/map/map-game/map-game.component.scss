@@ -9,6 +9,7 @@
                 padding: 50px;
                 display: flex;
                 flex-direction: row;
+                align-items: flex-start;
                 .link {
                     display: flex;
                     flex-direction: column;
@@ -22,8 +23,12 @@
                 }
                 .linked-hori {
                     width: 50px;
-                    border: 3px dashed gray;
-                    height: 3px;
+                    height: 7vw;
+                    padding: 3.5vw 0vw;
+                    .trait {
+                        width: 50px;
+                        border: 3px dashed gray;
+                    }
                 }
                 .link:hover {
                     .linked-bottom {

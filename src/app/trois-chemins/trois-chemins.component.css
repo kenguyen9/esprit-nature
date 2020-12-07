@@ -1,0 +1,28 @@
+.body {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/3_chemins_background.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+tr {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+}
+
+td {
+    width: 100%;
+}
+
+td:hover {
+    box-shadow: 0px 0px 30px black;
+    transition: 0.5s;
+}

@@ -16,6 +16,12 @@ import { DoctorLaboratoryComponent } from './game/sitka-champignons/doctor-labor
 import { MaisonCocoComponent } from './game/sitka-champignons/maison-coco/maison-coco/maison-coco.component';
 import { MaisonQuestComponent } from './game/sitka-champignons/maison-quest/maison-quest/maison-quest.component';
 import { MaisonBedroomComponent } from './game/sitka-champignons/maison-bedroom/maison-bedroom.component';
+import { MaisonLetterComponent } from './game/sitka-champignons/maison-letter/maison-letter.component';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TroisCheminsComponent } from './trois-chemins/trois-chemins.component';
+import { SerpentSacreComponent } from './trois-chemins/serpent-sacre/serpent-sacre.component';
+import { RoncesComponent } from './trois-chemins/ronces/ronces.component';
+import { BoueComponent } from './trois-chemins/boue/boue.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +38,18 @@ import { MaisonBedroomComponent } from './game/sitka-champignons/maison-bedroom/
     MaisonCocoComponent,
     MaisonQuestComponent,
     MaisonBedroomComponent,
+    MaisonLetterComponent,
+    TroisCheminsComponent,
+    SerpentSacreComponent,
+    RoncesComponent,
+    BoueComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

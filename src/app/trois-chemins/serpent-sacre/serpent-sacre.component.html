@@ -1,0 +1,36 @@
+<div class="body" [ngClass]="repaired?'repaired':'broke'">
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <div class="card">
+                    <div class="card-body" *ngIf="!woodProvided && serpentLevel.lvl === 0">
+                        <p>Oh ! C'est le trou du Serpent Sacré !</p>
+                        <p>Dommage que le pont soit cassé...</p>
+                        <p>Si seulement nous avions de quoi réparer le pont...</p>
+                        <button class="btn btn-block btn-dark" routerLink="../les-trois-chemins">Faire marche arrière...</button>
+                    </div>
+                    <div class="card-body" *ngIf="(woodProvided && !repaired) || serpentLevel.lvl === 1">
+                        <p>Des planches de bois ! Cela tombe à pic !</p>
+                        <p>Avec ces planches, nous allons pouvoir réparer le pont !</p>
+                        <p>Prendre ce passage va nous faire gagner énormément de temps...</p>
+                        <button class="btn btn-block btn-primary" (click)="repairBridge()" [disabled]="timeRepair!=0">Réparer le pont</button>
+                        <p></p>
+                        <p [hidden]="timeRepair==0">
+                            <ngb-progressbar type="info" height="30px" [value]="timeRepair" [max]="timeToRepair">Réparation du pont</ngb-progressbar>
+                        </p>
+                    </div>
+                    <div class="card-body" *ngIf="(woodProvided && repaired) || serpentLevel.lvl === 2">
+                        <p>Le pont est réparé ! Nous pouvons franchir le trou Sacré du Serpent !</p>
+                        <button class="btn btn-block btn-primary" (click)="repairBridge()">Traverser le pont.</button>
+                        <p></p>
+                        <p>
+                            <ngb-progressbar type="success" height="30px" [value]="timeRepair" [max]="timeToRepair">Pont réparé !</ngb-progressbar>
+                        </p>
+                    </div>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</div>

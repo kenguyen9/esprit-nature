@@ -27,7 +27,7 @@ export class DoctorQuestComponent implements OnInit, OnDestroy {
   private destroySubject = new Subject<void>();
   private url = environment.assetUrl;
   ngOnInit(): void {
-    this.doctorLevel = this.gameManager.getDoctorLevel();
+    this.doctorLevel = this.gameManager.getlevel('doctor');
 
     this.gameManager.getEvent()
       .pipe(takeUntil(this.destroySubject))

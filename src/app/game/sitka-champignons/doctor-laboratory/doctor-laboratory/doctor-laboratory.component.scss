@@ -1,6 +1,6 @@
 .body {
     background-image: url('https://i.pinimg.com/originals/28/a2/53/28a253df2bd0f6216823289f23dc481c.jpg');
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -65,26 +65,26 @@
 
 .eau {
     background: linear-gradient(153deg, rgba(255, 255, 255, 0.7764239484856442) 0%, rgba(0, 187, 229, 0.423482772015056) 100%);
-    opacity: 0.4;
-}
-
-.gradient-red-orange {
-    background: linear-gradient(323deg, rgba(255, 0, 0, 0.6475724078693977) 0%, rgba(255, 105, 5, 0.423482772015056) 100%);
     opacity: 0.6;
 }
 
+.gradient-red-orange {
+    background: linear-gradient(323deg, rgba(255, 0, 0, 0.6475724078693977) 0%, rgba(255, 105, 5, 0.523482772015056) 100%);
+    opacity: 0.7;
+}
+
 .gradient-green-blue {
-    background: linear-gradient(96deg, rgba(33, 241, 0, 0.4795051809786415) 0%, rgba(93, 255, 182, 0.38426708574054624) 100%);
+    background: linear-gradient(96deg, rgba(33, 241, 0, 0.5795051809786415) 0%, rgba(93, 255, 182, 0.48426708574054624) 100%);
 }
 
 .aconite {
-    background: linear-gradient(96deg, rgba(190, 0, 241, 0.4795051809786415) 0%, rgba(93, 99, 255, 0.38426708574054624) 100%);
+    background: linear-gradient(96deg, rgba(190, 0, 241, 0.5795051809786415) 0%, rgba(93, 99, 255, 0.48426708574054624) 100%);
 }
 
 .grapcorne {
-    background: linear-gradient(96deg, rgba(199, 241, 0, 0.4795051809786415) 0%, rgba(255, 166, 93, 0.38426708574054624) 100%);
+    background: linear-gradient(96deg, rgba(199, 241, 0, 0.5795051809786415) 0%, rgba(255, 166, 93, 0.48426708574054624) 100%);
 }
 
 .sisimbre {
-    background: linear-gradient(315deg, rgba(241, 214, 0, 0.4795051809786415) 0%, rgba(126, 253, 26, 0.5243231081495099) 100%);
+    background: linear-gradient(315deg, rgba(241, 214, 0, 0.5795051809786415) 0%, rgba(126, 253, 26, 0.5243231081495099) 100%);
 }

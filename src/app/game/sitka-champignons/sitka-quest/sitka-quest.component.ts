@@ -29,7 +29,7 @@ export class SitkaQuestComponent implements OnInit, OnDestroy {
   public sitkaLevel: Level;
   public isCollapsed = true;
   ngOnInit(): void {
-    this.sitkaLevel = this.gameManager.getSitkaLevel();
+    this.sitkaLevel = this.gameManager.getlevel('sitka');
 
     if (this.sitkaLevel.lvl === 2) {
       this.dialog = [];

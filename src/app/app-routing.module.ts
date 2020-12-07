@@ -1,3 +1,5 @@
+import { TroisCheminsComponent } from './trois-chemins/trois-chemins.component';
+import { MaisonLetterComponent } from './game/sitka-champignons/maison-letter/maison-letter.component';
 import { DoctorQuestComponent } from './game/sitka-champignons/doctor-quest/doctor-quest/doctor-quest.component';
 import { SitkaQuestComponent } from './game/sitka-champignons/sitka-quest/sitka-quest.component';
 import { GameManagerComponent } from './game-manager/game-manager.component';
@@ -10,6 +12,9 @@ import { MapGameComponent } from './game/sitka-champignons/map/map-game/map-game
 import { DoctorLaboratoryComponent } from './game/sitka-champignons/doctor-laboratory/doctor-laboratory/doctor-laboratory.component';
 import { MaisonCocoComponent } from './game/sitka-champignons/maison-coco/maison-coco/maison-coco.component';
 import { MaisonQuestComponent } from './game/sitka-champignons/maison-quest/maison-quest/maison-quest.component';
+import { SerpentSacreComponent } from './trois-chemins/serpent-sacre/serpent-sacre.component';
+import { RoncesComponent } from './trois-chemins/ronces/ronces.component';
+import { BoueComponent } from './trois-chemins/boue/boue.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent, pathMatch: 'full' },
@@ -24,7 +29,12 @@ const routes: Routes = [
       { path: 'le-docteur', component: DoctorQuestComponent},
       { path: 'le-laboratoire', component: DoctorLaboratoryComponent},
       { path: 'la-maison-de-coco', component: MaisonCocoComponent},
-      { path: 'la-cabane-de-coco', component: MaisonQuestComponent}
+      { path: 'la-cabane-de-coco', component: MaisonQuestComponent},
+      { path: 'le-message-de-coco', component: MaisonLetterComponent},
+      { path: 'les-trois-chemins', component: TroisCheminsComponent},
+      { path: 'le-trou-du-serpent-sacre', component: SerpentSacreComponent},
+      { path: 'le-passage-ronces', component: RoncesComponent},
+      { path: 'les-marecages', component: BoueComponent}
     ]
   }
 ];
