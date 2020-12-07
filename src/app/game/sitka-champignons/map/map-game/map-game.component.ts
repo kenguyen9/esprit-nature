@@ -11,6 +11,7 @@ export class MapGameComponent implements OnInit {
   constructor() { }
 
   public url = environment.assetUrl;
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/map-background.jpg")';
   ngOnInit(): void {
   }
 

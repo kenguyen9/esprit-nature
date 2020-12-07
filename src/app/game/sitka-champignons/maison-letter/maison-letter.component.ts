@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-maison-letter',
@@ -12,6 +13,7 @@ export class MaisonLetterComponent implements OnInit {
 
   typedCode = '';
   success = false;
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/coco_letter_background.png")';
 
   ngOnInit(): void {
   }

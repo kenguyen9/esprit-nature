@@ -1,7 +1,7 @@
 <div class="main">
     <router-outlet></router-outlet>
 </div>
-<div class="items">
+<div class="items" [style]="itemurl">
     <button style="padding: 5px;background-color: green;" (click)="reset()">Reset</button>
     <button class="btn btn-large btn-dark" placement="top" ngbPopover="Pour te déplacer de lieu en lieu, appuie sur la carte juste à droite !
     Tu vas collecter des objets pendant le jeu, tu devras cliquer dessus au bon moment pour résoudre les énigmes." popoverTitle="? Aide">

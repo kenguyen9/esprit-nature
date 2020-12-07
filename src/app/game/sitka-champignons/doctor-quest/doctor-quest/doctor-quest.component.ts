@@ -25,10 +25,11 @@ export class DoctorQuestComponent implements OnInit, OnDestroy {
   public questions: string[] = [];
   public doctorLevel: Level;
   private destroySubject = new Subject<void>();
-  private url = environment.assetUrl;
+  public url = environment.assetUrl;
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/docteur-background.png")';
+  public dialogurl = 'background-image: url("' + environment.assetUrl + '/assets/doctor_recipe.jpg")';
   ngOnInit(): void {
     this.doctorLevel = this.gameManager.getlevel('doctor');
-
     this.gameManager.getEvent()
       .pipe(takeUntil(this.destroySubject))
       .subscribe(

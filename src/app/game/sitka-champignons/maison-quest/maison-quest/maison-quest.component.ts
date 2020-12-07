@@ -12,6 +12,7 @@ export class MaisonQuestComponent implements OnInit {
   selectedKey: number;
 
   constructor(private modalService: NgbModal) { }
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/coco_door_background.jpg")';
 
   url = environment.assetUrl;
   ngOnInit(): void {

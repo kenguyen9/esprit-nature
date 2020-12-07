@@ -20,6 +20,7 @@ export class SitkaChampignonsComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private gameManager: GameManagerComponent) { }
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/sitka-mush-grounds.jpeg")';
 
   public url = environment.assetUrl;
   closeResult = '';

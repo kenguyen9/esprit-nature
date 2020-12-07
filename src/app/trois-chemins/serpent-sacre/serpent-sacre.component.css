@@ -5,14 +5,6 @@
     background-repeat: no-repeat;
 }
 
-.broke {
-    background-image: url('/assets/serpent_sacre_background.jpg');
-}
-
-.repaired {
-    background-image: url('/assets/serpent_sacre_repaired_background.jpg');
-}
-
 table {
     width: 100%;
     height: 100%;

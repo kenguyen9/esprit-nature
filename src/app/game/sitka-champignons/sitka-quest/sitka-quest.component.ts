@@ -28,6 +28,8 @@ export class SitkaQuestComponent implements OnInit, OnDestroy {
   dialogLevel = 0;
   public sitkaLevel: Level;
   public isCollapsed = true;
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/sitka-quest-background.jpg")';
+
   ngOnInit(): void {
     this.sitkaLevel = this.gameManager.getlevel('sitka');
 

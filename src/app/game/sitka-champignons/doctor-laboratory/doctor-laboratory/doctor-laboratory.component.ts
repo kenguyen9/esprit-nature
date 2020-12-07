@@ -21,7 +21,7 @@ export class DoctorLaboratoryComponent implements OnInit {
   public potionDictionnary = new PotionDictionnary();
 
   public url = environment.assetUrl;
-
+  public bgurl = 'background-image: url("' + environment.assetUrl + '/assets/doctor_laboratory.jpg")';
   public isMixed = false;
   public isGood = false;
 

@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { Level } from './../model/level';
 import { Item } from './../model/item';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -28,6 +28,7 @@ export interface GameManagerEvent {
 export class GameManagerComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
+  public itemurl = 'background-image: url("' + environment.assetUrl + '/assets/bag-texture-background.jpg")';
 
   public url = environment.assetUrl;
 

@@ -2,6 +2,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { GameManagerComponent, GameManagerEventType } from 'src/app/game-manager/game-manager.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-serpent-sacre',
@@ -20,6 +21,10 @@ export class SerpentSacreComponent implements OnInit, OnDestroy {
   public serpentLevel;
 
   public timeToRepair = 200;
+
+  public bgurlRepaired = 'background-image: url("' + environment.assetUrl + '/assets/serpent_sacre_repaired_background.jpg")';
+  public bgurlBroke = 'background-image: url("' + environment.assetUrl + '/assets/serpent_sacre_background.jpg")';
+
   ngOnInit(): void {
 
     this.serpentLevel = this.gameManager.getlevel('serpent');
